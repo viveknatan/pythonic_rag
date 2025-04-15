@@ -165,8 +165,16 @@ def process_file(file: AskFileResponse):
 Simply put, this downloads the file as a temp file, we load it in with `TextFileLoader` and then split it with our `TextSplitter`, and returns that list of strings!
 
 #### ❓ QUESTION #1:
-
 Why do we want to support streaming? What about streaming is important, or useful?
+
+<i><br> <b>Answer:</b> 
+<br> 
+Streaming is essential in LLM apps and those which use RAG for system performance and user experience.
+Specific to a RAG pipeline, streaming helps with 
+1. Making the system feel intelligent and real-time
+2. Hiding backend latency (retrieval, embedding, model inference)
+3. Giving users confidence that the app is working as expected
+</i>
 
 ### On Chat Start:
 
@@ -209,6 +217,11 @@ Now, we'll save that into our user session!
 #### ❓ QUESTION #2: 
 
 Why are we using User Session here? What about Python makes us need to use this? Why not just store everything in a global variable?
+
+<i>
+<br> <b>Answer: </b> 
+<br> Multiple users can use the app and upload their files into it at the same time. The user session allows for user's files to be available only in their session. However global variables are available across all sessions of the app which leads to unintended data sharing. Also global variables as the storage for these files will eventually lead to memory issues which are avoided by using seperate sessions and the memory could be ejected at the end of the said session.
+</i>
 
 ### On Message
 
